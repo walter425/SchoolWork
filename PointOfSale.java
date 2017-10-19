@@ -1,4 +1,4 @@
-package pointofsale;
+package essentials;
 
 import java.util.Scanner;
 /**
@@ -13,10 +13,10 @@ static int mumInventory = 10;
 static int pumpkinInventory = 10;
 static int scarecrowInventory = 10;
 static int cornstalkInventory = 10;
-static double MUM_PRICE = 8.00;
-static double PUMPKIN_PRICE = 5.00;
-static double SCARECROW_PRICE = 5.00;
-static double CORNSTALK_PRICE = 6.00;
+static final double MUM_PRICE = 8.00;
+static final double PUMPKIN_PRICE = 5.00;
+static final double SCARECROW_PRICE = 5.00;
+static final double CORNSTALK_PRICE = 6.00;
 static double subTotal = 0.00;
 static double returnedLocalTax = 0.00;
 static double returnedStateTax = 0.00;
@@ -26,52 +26,78 @@ static char repeat = 'Y';
 static String input;
 
     public static void main(String[] args) {
-        subTotal = 0.00;
+	// while .toUpperCase(repeat) line and Scanner taken from Gaddis, Tony. 2016. Starting Out with Java.
+	// 6th Edition.
     	while (Character.toUpperCase(repeat) == 'Y') {
+                subTotal = 0.00;
+                System.out.println("");
 		System.out.println("Welcome to the Farm Shop!");
                 System.out.println("");
 		printInventory();
 		do {
 			getArticleID();
 			getArticleQuantity();
+			// switch syntax taken from Gaddis, Tony. 2016. Starting Out with Java.
+			// 6th Edition. page 154.
 			switch (articleID) {
-			case 1:
-				if (mumInventory > 0 && quantityOrdered <= mumInventory) {
+                            case 0:
+                                break;
+                            case 1:
+				if (mumInventory > 0 && quantityOrdered <= 
+                                        mumInventory) {
 					addToSubtotal();
 					decreaseInventory();
 				} else {
-					System.out.println("There are not enough mums in inventory.");
-					System.out.println("You can purchase up to " + mumInventory + " mums.");
+					System.out.println("There are not "
+                                                + "enough mums in inventory.");
+					System.out.println("You can purchase "
+                                                + "up to " + mumInventory + 
+                                                " mums.");
 				}; //end if...else
 				break;
-                        case 2:
-				if (pumpkinInventory > 0 && quantityOrdered <= pumpkinInventory) {
+                            case 2:
+				if (pumpkinInventory > 0 && quantityOrdered 
+                                        <= pumpkinInventory) {
 					addToSubtotal();
 					decreaseInventory();
 				} else {
-					System.out.println("There are not enough pumpkins in inventory.");
-					System.out.println("You can purchase up to " + pumpkinInventory + " pumpkins.");
+					System.out.println("There are not "
+                                                + "enough pumpkins in "
+                                                + "inventory.");
+					System.out.println("You can purchase "
+                                                + "up to " + pumpkinInventory + 
+                                                " pumpkins.");
 				}; //end if...else
 				break;
-                        case 3:
-				if (scarecrowInventory > 0 && quantityOrdered <= scarecrowInventory) {
+                            case 3:
+				if (scarecrowInventory > 0 && quantityOrdered 
+                                        <= scarecrowInventory) {
 					addToSubtotal();
 					decreaseInventory();
 				} else {
-					System.out.println("There are not enough scarecrows in inventory.");
-					System.out.println("You can purchase up to " + scarecrowInventory + " scarecrows.");
+					System.out.println("There are not "
+                                                + "enough scarecrows in "
+                                                + "inventory.");
+					System.out.println("You can purchase "
+                                                + "up to " + scarecrowInventory
+                                                + " scarecrows.");
 				}; //end if...else
 				break;
-                        case 4:
-				if (cornstalkInventory > 0 && quantityOrdered <= cornstalkInventory) {
+                            case 4:
+				if (cornstalkInventory > 0 && quantityOrdered 
+                                        <= cornstalkInventory) {
 					addToSubtotal();
 					decreaseInventory();
 				} else {
-					System.out.println("There are not enough cornstalks in inventory.");
-					System.out.println("You can purchase up to " + cornstalkInventory + " cornstalks.");
+					System.out.println("There are not "
+                                                + "enough cornstalks in "
+                                                + "inventory.");
+					System.out.println("You can purchase "
+                                                + "up to " + cornstalkInventory
+                                                + " cornstalks.");
 				}; //end if...else
 				break;
-			default:
+                            default:
 				System.out.println("Invalid article ID.");
 				break;
 			} // end switch
@@ -84,15 +110,20 @@ static String input;
 	} // end while
     } // close main()
 
-// Horizontal tab example taken from Gaddis, Tony. 2016. Stating Out with Java.
+// Horizontal tab example taken from Gaddis, Tony. 2016. Starting Out with Java.
 // 6th Edition. page 37.
 
     public static void printInventory() {
-	System.out.println("Article ID\t" + "Descrip\t\t" + "Price\t" + "Amount Available");
-	System.out.println("1\t\t" + "Mum\t\t" + MUM_PRICE +"\t" + mumInventory);
-	System.out.println("2\t\t" + "Pumpkin\t\t" + PUMPKIN_PRICE +"\t" + pumpkinInventory);
-	System.out.println("3\t\t" + "Scarecrow\t" + SCARECROW_PRICE +"\t" + scarecrowInventory);
-	System.out.println("4\t\t" + "Cornstalk\t" + CORNSTALK_PRICE +"\t" + cornstalkInventory);
+	System.out.println("Article ID\t" + "Descrip\t\t" + "Price\t" + 
+                "Amount Available");
+	System.out.println("1\t\t" + "Mum\t\t" + MUM_PRICE +"\t" +
+                mumInventory);
+	System.out.println("2\t\t" + "Pumpkin\t\t" + PUMPKIN_PRICE +"\t" +
+                pumpkinInventory);
+	System.out.println("3\t\t" + "Scarecrow\t" + SCARECROW_PRICE +"\t" + 
+                scarecrowInventory);
+	System.out.println("4\t\t" + "Cornstalk\t" + CORNSTALK_PRICE +"\t" + 
+                cornstalkInventory);
         System.out.println("");
     } // close printinventory()
 
@@ -160,9 +191,12 @@ static String input;
     public static void displayTotalSale() {
         System.out.println("");
 	System.out.println("Subtotal: \t\t$" + subTotal);
-	System.out.println("Local Tax (" + LOCAL_TAX * 100 + "%): \t$" + returnedLocalTax);
-	System.out.println("State Tax (" + STATE_TAX * 100 + "%): \t$" + returnedStateTax);
-	System.out.println("Total Sale: \t\t$"+ (subTotal + returnedLocalTax + returnedStateTax));
+	System.out.println("Local Tax (" + LOCAL_TAX * 100 + "%): \t$" + 
+                returnedLocalTax);
+	System.out.println("State Tax (" + STATE_TAX * 100 + "%): \t$" + 
+                returnedStateTax);
+	System.out.println("Total Sale: \t\t$"+ (subTotal + returnedLocalTax + 
+                returnedStateTax + "\n"));
     } // close displayTotalSale()
 
     public static void askToContinue() {
